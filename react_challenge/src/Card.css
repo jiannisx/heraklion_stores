@@ -1,0 +1,17 @@
+.card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .card h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .card p {
+    margin: 0;
+  }
+  

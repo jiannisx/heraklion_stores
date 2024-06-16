@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
-import { setSearch, getSearch } from './globals';
+import { setElements } from './globals';
+import { useSearch } from './SearchContext';
 import './SearchBar.css';
 
 function SearchBar() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState('');
+  const { setSearchKey } = useSearch();
 
   const handleSearch = () => {
-    setSearch(query);
-    if (getSearch().trim() === '') {
-      setResults('Please enter a search query.');
-    } else {
-      setResults(`You searched for: ${getSearch()}`);
+    if (query.trim() !== '') {
+      setSearchKey(query);
+      fetchDataAndCreateCards(query);
+      setQuery('');
+    }
+  };
+
+  const fetchDataAndCreateCards = async (searchQuery) => {
+    try {
+      // Fetch data from the API (replace 'your_api_endpoint' with the actual endpoint)
+      // const response = await fetch(`your_api_endpoint?q=${searchQuery}`);
+      // const data = await response.json();
+      // Assuming 'data' is an array of items, create cards
+      setElements('Hello', searchQuery); // Store the search results in a global variable
+      document.dispatchEvent(new CustomEvent('dataFetched')); // Trigger an event to notify data is fetched
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
   };
 
@@ -25,7 +38,6 @@ function SearchBar() {
         placeholder="Search..."
       />
       <button onClick={handleSearch} className="search-button">Search</button>
-      <div className="results">{results}</div>
     </div>
   );
 }

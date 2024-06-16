@@ -1,0 +1,12 @@
+.card-container {
+    margin-top: 20px; /* Adjust as necessary */
+    padding: 20px;
+    background-color: #a0f0f0;
+  }
+  
+  .card-container p {
+    margin: 0;
+    font-style: italic;
+    color: #999;
+  }
+  

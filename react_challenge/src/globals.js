@@ -1,9 +1,13 @@
-let search = '';
+let elements = new Map();
 
-export function setSearch(value) {
-  search = value;
-}
+export function elementsHasKey(key) {
+  return elements.has(key);
+};
 
-export function getSearch() {
-  return search;
-}
+export function setElements(value, key) {
+  elements[key] = value;
+};
+
+export function getElements(key) {
+  return elements[key];
+};
