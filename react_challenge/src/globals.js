@@ -5,9 +5,9 @@ export function elementsHasKey(key) {
 };
 
 export function setElements(value, key) {
-  elements[key] = value;
+  elements.set(key, value);
 };
 
 export function getElements(key) {
-  return elements[key];
+  return elements.get(key);
 };
