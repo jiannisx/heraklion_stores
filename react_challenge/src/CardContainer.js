@@ -45,13 +45,15 @@ function CardContainer({ searchQuery }) {
     return (
       <div id="card-container" className="card-container">
         <p>Current Search: {searchQuery}</p>
-        {Array.isArray(data) ? (
-          data.map((store, index) => (
-            <Card key={index} store={store} />
-          ))
-        ) : (
-          <Card key={data} store={data} />
-        )}
+        <div className="card-grid">
+          {Array.isArray(data) ? (
+            data.map((store, index) => (
+              <Card key={index} store={store} />
+            ))
+          ) : (
+            <Card key={searchQuery} store={data} />
+          )}
+        </div>
       </div>
     );
   }

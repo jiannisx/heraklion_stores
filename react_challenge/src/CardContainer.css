@@ -1,12 +1,19 @@
 .card-container {
-    margin-top: 20px; /* Adjust as necessary */
-    padding: 20px;
-    background-color: #a0f0f0;
-  }
-  
-  .card-container p {
-    margin: 0;
-    font-style: italic;
-    color: #999;
-  }
-  
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px; /* Space between the elements */
+  padding: 16px; /* Space around the container */
+}
+
+.card-container p {
+  margin: 0 0 8px 0; /* Small space below the paragraph */
+  font-style: italic;
+  font-size: 16px;
+  color: #999;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px; /* Space between the cards */
+}
