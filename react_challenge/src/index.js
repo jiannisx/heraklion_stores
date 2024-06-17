@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { SearchProvider } from './SearchContext'; // Import the SearchProvider
+import setStores from './PredefinedStores';
+import { SearchProvider } from './SearchContext';
+import './index.css';
+
+setStores();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <SearchProvider>
