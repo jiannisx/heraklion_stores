@@ -2,11 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import setStores from './PredefinedStores';
 import { SearchProvider } from './SearchContext';
 import './index.css';
-
-setStores();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

@@ -3,8 +3,7 @@ import { getElements } from './globals';
 import Card from './Card';
 import './CardContainer.css';
 
-
-function CardContainer({ searchQuery }) {
+function CardContainer({ searchQuery, onCardClick }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -33,8 +32,7 @@ function CardContainer({ searchQuery }) {
     };
   }, [searchQuery]);
 
-  console.log(searchQuery);
-  if(data == null || searchQuery === '' || (Array.isArray(data) && data.length === 0)) {
+  if (data == null || searchQuery === '' || (Array.isArray(data) && data.length === 0)) {
     return (
       <div id="card-container" className="card-container">
         <p>No data available</p>
@@ -48,16 +46,15 @@ function CardContainer({ searchQuery }) {
         <div className="card-grid">
           {Array.isArray(data) ? (
             data.map((store, index) => (
-              <Card key={index} store={store} />
+              <Card key={index} store={store} onClick={onCardClick} />
             ))
           ) : (
-            <Card key={searchQuery} store={data} />
+            <Card key={searchQuery} store={data} onClick={onCardClick} />
           )}
         </div>
       </div>
     );
   }
-  
 }
 
 export default CardContainer;
