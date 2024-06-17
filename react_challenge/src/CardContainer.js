@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getElements } from './globals';
-import { useSearch } from './SearchContext';
 import Card from './Card';
 import './CardContainer.css';
+
 
 function CardContainer({ searchQuery }) {
   const [data, setData] = useState([]);
@@ -45,13 +45,13 @@ function CardContainer({ searchQuery }) {
     return (
       <div id="card-container" className="card-container">
         <p>Current Search: {searchQuery}</p>
-          {(Array.isArray(data)) ? ( // Check if data is an array
-              data.map((item) => (
-                <Card key={item.id} title={item.title} description={item.description} />
-              ))
-          ) : ( // If data is not an array (assume it's a single object or element)
-            <Card key={data} title={data} description={data} />
-          )}
+        {Array.isArray(data) ? (
+          data.map((store, index) => (
+            <Card key={index} store={store} />
+          ))
+        ) : (
+          <Card key={data} store={data} />
+        )}
       </div>
     );
   }

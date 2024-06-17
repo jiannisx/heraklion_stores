@@ -1,11 +1,13 @@
 import React from 'react';
 import './Card.css';
 
-function Card({ title, description }) {
+function Card({ store }) {
   return (
     <div className="card">
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <h3>{store.name}</h3>
+      <p>{store.address}</p>
+      <p>{store.city}, {store.state} {store.zip_code}</p>
+      <p>Rating: {store.rating}</p>
     </div>
   );
 }
