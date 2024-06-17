@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { setElements, elementsHasKey } from './globals';
+import { queryAnswersSet, queryAnswersHasKey } from './queryAnswers';
 import { useSearch } from './SearchContext';
 import './SearchBar.css';
 
@@ -42,8 +42,8 @@ function SearchBar() {
 
   const fetchDataAndCreateCards = async (searchQuery) => {
     try {
-      console.log(elementsHasKey(searchQuery.trim()));
-      if(!elementsHasKey(searchQuery.trim())) {
+      console.log(queryAnswersHasKey(searchQuery.trim()));
+      if(!queryAnswersHasKey(searchQuery.trim())) {
         const response = await axios.get('https://local-business-data.p.rapidapi.com/search-in-area', {
           headers: {
             'X-Rapidapi-Key': '2925e31e47mshb642e62939bdb2bp13809ajsn0fc8881a286b',
@@ -99,7 +99,7 @@ function SearchBar() {
         }));
         //const extractedData = getTestData();
 
-        setElements(extractedData, searchQuery.trim()); // Store the extracted data in a global variable
+        queryAnswersSet(extractedData, searchQuery.trim()); // Store the extracted data in a global variable
         document.dispatchEvent(new CustomEvent('dataFetched')); // Trigger an event to notify data is fetched
       }
       else {

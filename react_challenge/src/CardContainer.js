@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getElements } from './globals';
+import { queryAnswersGet } from './queryAnswers';
 import Card from './Card';
 import './CardContainer.css';
 
@@ -9,7 +9,7 @@ function CardContainer({ searchQuery, onCardClick }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const elements = await getElements(searchQuery);
+        const elements = await queryAnswersGet(searchQuery);
         setData(elements || []);
       } catch (error) {
         console.error('Error fetching data:', error);
